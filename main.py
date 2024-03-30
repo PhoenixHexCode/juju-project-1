@@ -72,6 +72,37 @@ def read_root():
         'total_tokens': total_tokens
     }
 
+#Create new app.get
+#  url dynamic parameter base
+#  /token/1
+@app.get('/token/{id}')
+async def get_token_by_id(id: int):
+
+    print('get_token_by_id', id)    
+    #Retreive id infromation
+    # Initialize database connection
+    db = MySQLDatabase()
+
+    # Execute a select query
+    select_query = """
+        SELECT tokens, message, created_at FROM token_usage WHERE id = %s 
+        """
+    db_result = db.execute_select_query(select_query, (id,))
+
+    if not db_result:
+        return None
+
+    result = db_result[0]
+
+    #PRINT INFORMATION WITHOUT LIST NAME / ARRAY
+    # for row in db_result:
+    #     result_value = row[0]
+
+    # Close the connection
+    db.close()
+
+    return result['tokens']
+
 
 @app.post('/question')
 async def question_response(request: Question):
