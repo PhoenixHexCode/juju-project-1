@@ -85,15 +85,23 @@ async def get_token_by_id(id: int):
 
     # Execute a select query
     select_query = """
-        SELECT tokens FROM token_usage WHERE id = %s 
+        SELECT tokens, message, created_at FROM token_usage WHERE id = %s 
         """
-    db_result = db.execute_select_query(select_query, (id))
-    print(db_result)
+    db_result = db.execute_select_query(select_query, (id,))
+
+    if not db_result:
+        return None
+
+    result = db_result[0]
+
+    #PRINT INFORMATION WITHOUT LIST NAME / ARRAY
+    # for row in db_result:
+    #     result_value = row[0]
 
     # Close the connection
     db.close()
 
-    return "ok"
+    return result['tokens']
 
 
 @app.post('/question')

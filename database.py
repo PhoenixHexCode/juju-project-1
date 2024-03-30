@@ -24,7 +24,7 @@ class MySQLDatabase:
 
     def execute_query(self, query, params=None):
         """Execute a query (insert, update, delete)."""
-        cursor = self.connection.cursor()
+        cursor = self.connection.cursor(dictionary=True)
         try:
             if params:
                 cursor.execute(query, params)
@@ -39,7 +39,7 @@ class MySQLDatabase:
 
     def execute_select_query(self, query, params=None):
         """Execute a select query."""
-        cursor = self.connection.cursor()
+        cursor = self.connection.cursor(dictionary=True)
         try:
             if params:
                 cursor.execute(query, params)
