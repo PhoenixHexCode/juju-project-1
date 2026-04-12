@@ -1,6 +1,35 @@
-__pycache__
-myenv
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+myenv/
+env/
 .env
-.venv
+.env.*
+!.env.example
 
-node_modules
+# Data
+*.db
+*.sqlite
+*.sqlite3
+data/
+chroma/
+chroma_db/
+audio_cache/
+logs/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Secrets
+secrets.json
+*.pem
+*.key

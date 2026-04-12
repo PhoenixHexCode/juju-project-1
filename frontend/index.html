@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a0f" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+  <title>JUJU — AI Companion</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main id="app">
+    <header>
+      <h1>JUJU</h1>
+      <div id="status" class="status">offline</div>
+    </header>
+
+    <section id="login-panel">
+      <input id="username" type="text" placeholder="your name" autocomplete="username" />
+      <button id="login-btn">Connect</button>
+    </section>
+
+    <section id="chat-panel" hidden>
+      <div id="messages" aria-live="polite"></div>
+
+      <form id="text-form">
+        <input id="text-input" type="text" placeholder="Type or hold the mic…" autocomplete="off" />
+        <button type="submit">Send</button>
+      </form>
+
+      <div class="mic-row">
+        <button id="mic-btn" class="mic" aria-label="Hold to talk">
+          <span class="dot"></span> Hold to talk
+        </button>
+        <div id="meter" class="meter"><div></div></div>
+      </div>
+
+      <details id="device-info">
+        <summary>Device & tools</summary>
+        <pre id="device-info-body">…</pre>
+      </details>
+    </section>
+
+    <dialog id="perm-dialog">
+      <form method="dialog">
+        <h3 id="perm-title">Permission requested</h3>
+        <p id="perm-body"></p>
+        <menu>
+          <button value="allow_once">Allow once</button>
+          <button value="allow_session">Session</button>
+          <button value="allow_always">Always</button>
+          <button value="deny" class="danger">Deny</button>
+        </menu>
+      </form>
+    </dialog>
+  </main>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

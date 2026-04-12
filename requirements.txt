@@ -1,7 +1,44 @@
-fastapi==0.110.0
-mangum==0.17.0
-pydantic==2.6.3
-openai==1.13.3
+# --- Web framework ---
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+websockets==13.1
+python-multipart==0.0.12
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# --- LLM providers (all optional at runtime; router degrades gracefully) ---
+anthropic==0.39.0
+openai==1.51.0
+google-generativeai==0.8.3
+groq==0.11.0
+mistralai==1.1.0
+
+# --- Memory / embeddings ---
+chromadb==0.5.13
+sentence-transformers==3.1.1
+sqlalchemy==2.0.35
+aiosqlite==0.20.0
+
+# --- Voice ---
+faster-whisper==1.0.3        # local STT fallback
+elevenlabs==1.10.0           # cloud TTS (Stark-style persona voice)
+sounddevice==0.5.1           # mic capture for desktop CLI client
+soundfile==0.12.1
+numpy==1.26.4
+
+# --- MCP ---
+mcp==1.0.0
+
+# --- Security / auth ---
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+cryptography==43.0.1
+
+# --- Telephony (restaurant-booking demo agent) ---
+twilio==9.3.3
+
+# --- Misc ---
+httpx==0.27.2
 python-dotenv==1.0.1
-uvicorn==0.28.0
-mysql-connector-python==8.3.0
+tenacity==9.0.0
+psutil==6.0.0
